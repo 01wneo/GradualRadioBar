@@ -1,5 +1,5 @@
 ##GradualRadioBar
-仿微信底部导航栏图标颜色渐变效果
+拿RadioGroup和RadioButton开刀，实现微信底部导航栏图标颜色渐变效果
 ##使用
 ###gradle
 ```
