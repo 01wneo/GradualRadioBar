@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.leibnik.gradualradiobar.GradualRadioGroup;
-import io.github.leibnik.example.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,13 +32,7 @@ public class MainActivity extends AppCompatActivity {
             list.add(fragment);
         }
         viewPager.setAdapter(new DemoPagerAdapter(getSupportFragmentManager(), list));
-        viewPager.addOnPageChangeListener(gradualRadioGroup);
-        gradualRadioGroup.setOnRadioButtonClickListener(new GradualRadioGroup.OnRadioButtonClickListener() {
-            @Override
-            public void updateViewPager(int position) {
-                viewPager.setCurrentItem(position,false);
-            }
-        });
+        gradualRadioGroup.setViewPager(viewPager);
     }
 
     class DemoPagerAdapter extends FragmentPagerAdapter {
