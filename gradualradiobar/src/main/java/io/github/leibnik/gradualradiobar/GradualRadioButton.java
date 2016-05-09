@@ -23,11 +23,14 @@ public class GradualRadioButton extends RadioButton {
     private Paint mIconPaint;
     private Paint mTextPaint;
     private Paint mBackgroundPaint;
+
     private Bitmap mBitmap;
     private Bitmap mBackground;
+
     private int iconWidth;
     private int iconPadding;
     private int iconHeight;
+
     private Canvas mCanvas;
     private Drawable mIconDrawable;
     private Rect mRect;
@@ -58,13 +61,13 @@ public class GradualRadioButton extends RadioButton {
 
         setButtonDrawable(null);
         if (mIconDrawable != null) {
-            setCompoundDrawables(mIconDrawable, null, null, null);
+            setCompoundDrawablesWithIntrinsicBounds(null, mIconDrawable, null, null);
             mIconDrawable = getCompoundDrawables()[1];
         } else {
             mIconDrawable = getCompoundDrawables()[1];
         }
         if (mIconDrawable == null) {
-            throw new RuntimeException("'gradient_icon' or 'drawableTop' attribute should be defined");
+            throw new RuntimeException("'gradual_icon' or 'drawableTop' attribute should be defined");
         }
 
         mRect = mIconDrawable.getBounds();
