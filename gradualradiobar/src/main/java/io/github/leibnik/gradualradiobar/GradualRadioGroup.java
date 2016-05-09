@@ -12,15 +12,11 @@ import android.widget.RadioGroup;
  */
 public class GradualRadioGroup extends RadioGroup implements ViewPager.OnPageChangeListener {
 
-    private OnRadioButtonClickListener mClickListener;
+    private ViewPager mViewPager;
 
-
-    public interface OnRadioButtonClickListener {
-        void updateViewPager(int position);
-    }
-
-    public void setOnRadioButtonClickListener(OnRadioButtonClickListener clickListener) {
-        mClickListener = clickListener;
+    public void setViewPager(ViewPager viewPager) {
+        mViewPager = viewPager;
+        mViewPager.addOnPageChangeListener(this);
     }
 
     public GradualRadioGroup(Context context) {
@@ -39,8 +35,10 @@ public class GradualRadioGroup extends RadioGroup implements ViewPager.OnPageCha
             getChildAt(i).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mClickListener.updateViewPager(position);
                     setClickedViewChecked(position);
+                    if (mViewPager != null) {
+                        mViewPager.setCurrentItem(position, false);
+                    }
                 }
             });
         }
