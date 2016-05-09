@@ -3,7 +3,7 @@
 ##使用
 ###gradle
 ```
-compile 'io.github.leibnik:gradualradiobar:1.0.1'
+compile 'io.github.leibnik:gradualradiobar:1.0.2'
 ```
 ###xml
 GradualRadioGroup和GradualRadioButton必须配合使用
@@ -44,21 +44,14 @@ GradualRadioGroup和GradualRadioButton必须配合使用
     </io.github.leibnik.gradualradiobar.GradualRadioGroup>
 ```
 * `app:gradual_color`:渐变的颜色
-* `app:gradual_icon`:图标，可以使用`android:drawableTop`来设置图标
+* `app:gradual_icon`:图标，或者可以使用`android:drawableTop`来设置图标
 
 ###Java
 ```java
 gradualRadioGroup = (GradualRadioGroup) findViewById(R.id.radiobar);
 viewPager.setAdapter(adapter);
-// GradualRadioGroup实现了ViewPager.OnPageChangeListener接口
-viewPager.addOnPageChangeListener(gradualRadioGroup);
-// 通过单击GradualRadioButton切换ViewPager页面时需给GradualRadioGroup设置OnRadioButtonClickListener
-gradualRadioGroup.setOnRadioButtonClickListener(new GradualRadioGroup.OnRadioButtonClickListener() {
-    @Override
-    public void updateViewPager(int position) {
-        viewPager.setCurrentItem(position,false);
-    }
-});
+// 关键代码
+gradualRadioGroup.setViewPager(viewPager);
 ```
 ##效果
 ![](http://ww1.sinaimg.cn/mw690/b5405c76gw1f3dokvtqpyg20bb0gh4fa.gif)
